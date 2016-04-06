@@ -9,6 +9,11 @@ public class TextAnalyzer {
 	private static final int DEFAULT_COUNT = 1;
 	private Map<String, Integer> words;
 	
+	/**
+	 * Splits input text on words and puts them into the map. 
+	 * @param text input text to split
+	 * @see TextAnalyzer#putWord(String)
+	 */
 	public TextAnalyzer(String text) {
 		words = new HashMap<>();
 		String[] keys = text.split(REGEX);
@@ -22,6 +27,11 @@ public class TextAnalyzer {
 		return words;
 	}
 	
+	/**
+	 * Returns the word and the number of occurrences for the specified word, or a message if this map doesn't contain specified word.
+	 * @param word the word is to be searched
+	 * @return word and number of occurrences, or message if word is not found
+	 */
 	public String searchWord(String word) {
 		String message;
 		Integer count = words.get(word.toLowerCase());
@@ -45,6 +55,11 @@ public class TextAnalyzer {
 		return sb.toString();
 	}
 	
+	/**
+	 * Puts word into the map as a key. Associates the number of occurrences of this word in text with the key.
+	 * If the map previously contained the mapping for the key, the old value is incremented.
+	 * @param word a word to put into the map
+	 */
 	private void putWord(String word) {
 		Integer count = words.put(word, DEFAULT_COUNT);
 		
